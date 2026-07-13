@@ -1,0 +1,134 @@
+@switch (schema().type) {
+
+  @case ('text') {
+    <label class="flex flex-col gap-1.5">
+      <span class="field-label">{{ schema().label }}</span>
+      <input type="text" class="field-control" [(ngModel)]="value" />
+    </label>
+  }
+
+  @case ('textarea') {
+    <label class="flex flex-col gap-1.5">
+      <span class="field-label">{{ schema().label }}</span>
+      <textarea rows="3" class="field-control min-h-[84px] resize-y" [(ngModel)]="value"></textarea>
+    </label>
+  }
+
+  @case ('number') {
+    <label class="flex flex-col gap-1.5">
+      <span class="field-label">{{ schema().label }}</span>
+      <input type="number" class="field-control" [ngModel]="value" (ngModelChange)="onNumber($event)" />
+    </label>
+  }
+
+  @case ('boolean') {
+    <label class="flex cursor-pointer items-center gap-2.5 rounded-xl border border-line bg-white px-3.5 py-2.5">
+      <input type="checkbox" class="h-4 w-4 accent-[color:var(--color-brand)]" [(ngModel)]="value" />
+      <span class="field-label cursor-pointer">{{ schema().label }}</span>
+    </label>
+  }
+
+  @case ('select') {
+    <label class="flex flex-col gap-1.5">
+      <span class="field-label">{{ schema().label }}</span>
+      <select class="field-control" [(ngModel)]="value">
+        @for (opt of schema().options; track opt) {
+          <option [value]="opt">{{ opt }}</option>
+        }
+      </select>
+    </label>
+  }
+
+  @case ('image') {
+    <div class="flex flex-col gap-2">
+      <span class="field-label">{{ schema().label }}</span>
+      <div class="flex flex-wrap items-center gap-4 rounded-xl border border-line bg-cream/60 p-4">
+        <div class="grid h-24 w-32 shrink-0 place-items-center overflow-hidden rounded-xl border border-line bg-white">
+          @if (value) {
+            <img [src]="value" alt="" class="h-full w-full object-cover" />
+          } @else {
+            <span class="text-xs text-navy-600/60">لا توجد صورة</span>
+          }
+        </div>
+        <div class="flex min-w-[200px] flex-1 flex-col gap-2">
+          <input type="text" class="field-control" [(ngModel)]="value" placeholder="رابط الصورة أو اسم الملف" />
+          <div>
+            <label class="btn-ghost btn-sm cursor-pointer">
+              {{ uploading ? 'جارٍ الرفع…' : 'رفع صورة جديدة' }}
+              <input type="file" accept="image/*" (change)="onImage($event)" hidden [disabled]="uploading" />
+            </label>
+          </div>
+          @if (uploadError) { <p class="text-sm text-red-600">{{ uploadError }}</p> }
+        </div>
+      </div>
+    </div>
+  }
+
+  @case ('stringlist') {
+    <div class="flex flex-col gap-2">
+      <span class="field-label">{{ schema().label }}</span>
+      <div class="flex flex-col gap-2">
+        @for (item of list; track $index; let i = $index) {
+          <div class="flex items-start gap-2">
+            @if (schema().itemType === 'textarea') {
+              <textarea rows="2" class="field-control min-h-[64px] flex-1 resize-y" [(ngModel)]="list[i]"></textarea>
+            } @else {
+              <input type="text" class="field-control flex-1" [(ngModel)]="list[i]" />
+            }
+            <div class="flex items-center gap-1">
+              <button type="button" class="tool-btn" (click)="moveUp(i)" title="لأعلى">▲</button>
+              <button type="button" class="tool-btn" (click)="moveDown(i)" title="لأسفل">▼</button>
+              <button type="button" class="btn-danger" (click)="removeAt(i)">حذف</button>
+            </div>
+          </div>
+        } @empty {
+          <p class="rounded-xl border border-dashed border-line px-3.5 py-3 text-sm text-navy-600/70">
+            لا توجد عناصر بعد.
+          </p>
+        }
+      </div>
+      <button type="button" class="btn-ghost btn-sm self-start" (click)="addString()">
+        + إضافة {{ schema().itemLabel || 'عنصر' }}
+      </button>
+    </div>
+  }
+
+  @case ('objectlist') {
+    <div class="flex flex-col gap-2.5">
+      <span class="field-label">{{ schema().label }}</span>
+      <div class="flex flex-col gap-3">
+        @for (item of list; track $index; let i = $index) {
+          <div class="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
+            <div class="flex items-center justify-between gap-2 border-b border-line bg-cream/70 px-4 py-2.5">
+              <span class="flex min-w-0 items-center gap-2 text-sm font-bold text-navy">
+                <span class="grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-brand-50 text-xs font-extrabold text-brand">
+                  {{ i + 1 }}
+                </span>
+                <span class="truncate">{{ itemSummary(item) || (schema().itemLabel || 'عنصر') }}</span>
+              </span>
+              <div class="flex shrink-0 items-center gap-1">
+                <button type="button" class="tool-btn" (click)="moveUp(i)" title="لأعلى">▲</button>
+                <button type="button" class="tool-btn" (click)="moveDown(i)" title="لأسفل">▼</button>
+                <button type="button" class="btn-danger" (click)="removeAt(i)">حذف</button>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-x-6 gap-y-4 p-4 md:grid-cols-2">
+              @for (f of schema().fields; track f.key) {
+                <div [class.md:col-span-2]="wide(f)">
+                  <app-field-editor [schema]="f" [model]="item" />
+                </div>
+              }
+            </div>
+          </div>
+        } @empty {
+          <p class="rounded-xl border border-dashed border-line px-3.5 py-3 text-sm text-navy-600/70">
+            لا توجد عناصر بعد.
+          </p>
+        }
+      </div>
+      <button type="button" class="btn-ghost btn-sm self-start" (click)="addObject()">
+        + إضافة {{ schema().itemLabel || 'عنصر' }}
+      </button>
+    </div>
+  }
+}

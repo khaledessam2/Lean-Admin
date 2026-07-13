@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* ===== نظام التصميم — احترافي فاتح ===== */
+@theme {
+  /* اللون الأساسي — بدّل هذه القيم لتغيير هوية اللوحة بالكامل */
+  --color-brand: #4f46e5;       /* indigo-600 */
+  --color-brand-600: #4338ca;   /* indigo-700 */
+  --color-brand-700: #3730a3;   /* indigo-800 */
+  --color-brand-50: #eef2ff;    /* خلفية خفيفة للّون الأساسي */
+
+  --color-navy: #1e293b;        /* عناوين / نص قوي (slate-800) */
+  --color-navy-600: #64748b;    /* نص ثانوي (slate-500) */
+  --color-cream: #f6f7fb;       /* خلفية الصفحة */
+  --color-cream-deep: #eef1f7;  /* تعبئة خفيفة */
+  --color-line: #e6e9f1;        /* الحدود */
+
+  --font-sans: "Inter", system-ui, "Segoe UI", Tahoma, sans-serif;
+
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 30px -20px rgba(30, 41, 59, 0.35);
+  --shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 14px -10px rgba(30, 41, 59, 0.25);
+}
+
+@layer base {
+  html,
+  body {
+    @apply m-0 bg-cream text-navy antialiased;
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    @apply m-0 font-extrabold tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-brand/15 text-brand-700;
+  }
+}
+
+@layer components {
+  /* ----- الأزرار ----- */
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-brand px-5 py-2.5
+           font-bold text-white shadow-soft transition-all hover:bg-brand-600 active:scale-[.98]
+           disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100;
+  }
+  .btn-ghost {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-line bg-white
+           px-4 py-2 font-bold text-navy transition-colors hover:border-navy-600/30 hover:bg-cream
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-sm {
+    @apply px-3.5 py-2 text-sm;
+  }
+  .btn-danger {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-xl border border-red-200 bg-white
+           px-3 py-2 text-sm font-bold text-red-600 transition-colors hover:bg-red-50;
+  }
+
+  /* ----- حقول الإدخال ----- */
+  .field-control {
+    @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-navy shadow-sm
+           outline-none transition placeholder:text-navy-600/50
+           hover:border-navy-600/25 focus:border-brand focus:ring-4 focus:ring-brand/12;
+  }
+  .field-label {
+    @apply text-sm font-bold text-navy;
+  }
+
+  /* ----- البطاقات ----- */
+  .card {
+    @apply rounded-2xl border border-line bg-white shadow-soft;
+  }
+
+  /* ----- أدوات الترتيب ----- */
+  .tool-btn {
+    @apply grid h-8 w-8 cursor-pointer place-items-center rounded-lg border border-line bg-white
+           text-xs text-navy-600 transition-colors hover:border-brand/40 hover:bg-brand-50 hover:text-brand;
+  }
+
+  /* ----- أيقونات الشريط العلوي ----- */
+  .icon-btn {
+    @apply relative grid h-10 w-10 cursor-pointer place-items-center rounded-xl text-navy-600
+           transition-colors hover:bg-cream-deep hover:text-brand;
+  }
+}

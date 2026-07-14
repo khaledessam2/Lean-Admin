@@ -49,6 +49,10 @@ const ICON_OPTIONS = ICON_NAMES;
 
 /** وصف حقول كل قسم — مصدر الحقيقة لواجهة الأدمن. */
 const SCHEMAS: Record<SectionKey, FieldSchema[]> = {
+  brand: [
+    { key: 'logo', label: 'صورة الشعار (اتركه فارغاً لاستخدام الشعار المرسوم)', type: 'image' },
+    { key: 'alt', label: 'النص البديل للشعار', type: 'text' },
+  ],
   hero: [
     { key: 'badge', label: 'الشارة العلوية', type: 'text' },
     { key: 'titleLead', label: 'بداية العنوان', type: 'text' },
@@ -130,7 +134,13 @@ const SCHEMAS: Record<SectionKey, FieldSchema[]> = {
     { key: 'eyebrow', label: 'العنوان الفرعي', type: 'text' },
     { key: 'title', label: 'العنوان', type: 'text' },
     { key: 'intro', label: 'المقدّمة', type: 'textarea' },
-    { key: 'logos', label: 'الجهات', type: 'stringlist', itemType: 'text', itemLabel: 'جهة' },
+    {
+      key: 'logos', label: 'الجهات', type: 'objectlist', itemLabel: 'جهة',
+      fields: [
+        { key: 'name', label: 'الاسم', type: 'text' },
+        { key: 'logo', label: 'الشعار', type: 'image' },
+      ],
+    },
     { key: 'testimonialQuote', label: 'نص الشهادة', type: 'textarea' },
     { key: 'testimonialAuthor', label: 'صاحب الشهادة', type: 'text' },
     { key: 'testimonialRole', label: 'صفة صاحب الشهادة', type: 'text' },

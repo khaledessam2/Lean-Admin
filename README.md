@@ -22,7 +22,7 @@ siteUrl: 'http://localhost:4200', // رابط الموقع العام لزر ا�
 ```
 
 > إعداد قاعدة البيانات (الجدول + الحماية + bucket الصور) يتم مرة واحدة عبر ملف
-> `supabase/schema.sql` الموجود في مشروع الموقع العام.
+> [`supabase/schema.sql`](supabase/schema.sql). الدليل الكامل في [SETUP.md](SETUP.md).
 
 ## النشر
 ```bash

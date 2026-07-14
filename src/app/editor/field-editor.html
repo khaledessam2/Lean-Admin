@@ -54,11 +54,11 @@
           <input type="text" class="field-control" [(ngModel)]="value" placeholder="رابط الصورة أو اسم الملف" />
           <div>
             <label class="btn-ghost btn-sm cursor-pointer">
-              {{ uploading ? 'جارٍ الرفع…' : 'رفع صورة جديدة' }}
-              <input type="file" accept="image/*" (change)="onImage($event)" hidden [disabled]="uploading" />
+              {{ uploading() ? 'جارٍ الرفع…' : 'رفع صورة جديدة' }}
+              <input type="file" accept="image/*" (change)="onImage($event)" hidden [disabled]="uploading()" />
             </label>
           </div>
-          @if (uploadError) { <p class="text-sm text-red-600">{{ uploadError }}</p> }
+          @if (uploadError()) { <p class="text-sm text-red-600">{{ uploadError() }}</p> }
         </div>
       </div>
     </div>

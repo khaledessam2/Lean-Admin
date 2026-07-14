@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FieldSchema, isWideField } from './schema';
 import { ContentAdminService } from '../core/content-admin.service';
@@ -26,8 +26,8 @@ export class FieldEditorComponent {
   readonly model = input.required<any>();
 
   /** حالة رفع الصورة لكل حقل صورة. */
-  protected uploading = false;
-  protected uploadError = '';
+  protected readonly uploading = signal(false);
+  protected readonly uploadError = signal('');
 
   /** هل الحقل عريض (يمتدّ على كامل عرض شبكة عناصر القائمة). */
   protected readonly wide = isWideField;
@@ -88,14 +88,14 @@ export class FieldEditorComponent {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
     if (!file) return;
-    this.uploading = true;
-    this.uploadError = '';
+    this.uploading.set(true);
+    this.uploadError.set('');
     try {
       this.value = await this.content.uploadImage(file);
     } catch (err: any) {
-      this.uploadError = err?.message || 'تعذّر رفع الصورة';
+      this.uploadError.set(err?.message || 'تعذّر رفع الصورة');
     } finally {
-      this.uploading = false;
+      this.uploading.set(false);
       input.value = '';
     }
   }

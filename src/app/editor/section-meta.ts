@@ -11,6 +11,11 @@ export interface SectionMeta {
 }
 
 export const SECTION_META: Record<SectionKey, SectionMeta> = {
+  brand: {
+    slug: 'brand',
+    icon: 'image',
+    description: 'شعار الموقع: ارفع صورة الشعار لتظهر في الشريط العلوي والتذييل وقسم التواصل.',
+  },
   hero: {
     slug: 'hero',
     icon: 'home',

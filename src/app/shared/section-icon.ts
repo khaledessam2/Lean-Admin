@@ -59,6 +59,10 @@ import { Component, input } from '@angular/core';
         @case ('panel') {
           <rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 15h18" />
         }
+        @case ('image') {
+          <rect x="3" y="4" width="18" height="16" rx="2" />
+          <circle cx="8.5" cy="9" r="1.5" /><path d="m5 18 5-5 4 4 2-2 3 3" />
+        }
       }
     </svg>
   `,

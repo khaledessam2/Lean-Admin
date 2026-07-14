@@ -12,6 +12,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/dashboard/dashboard').then((m) => m.DashboardComponent),
     children: [
       { path: '', redirectTo: 'hero', pathMatch: 'full' },
+      { path: 'brand', loadComponent: () => import('./pages/dashboard/sections/brand/brand.page').then((m) => m.BrandPageComponent) },
       { path: 'hero', loadComponent: () => import('./pages/dashboard/sections/hero/hero.page').then((m) => m.HeroPageComponent) },
       { path: 'overview', loadComponent: () => import('./pages/dashboard/sections/overview/overview.page').then((m) => m.OverviewPageComponent) },
       { path: 'features', loadComponent: () => import('./pages/dashboard/sections/features/features.page').then((m) => m.FeaturesPageComponent) },

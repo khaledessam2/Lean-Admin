@@ -11,7 +11,7 @@ import { BrandComponent } from '../../../shared/brand';
   imports: [RouterLink, RouterLinkActive, SectionIconComponent, BrandComponent],
   template: `
     <aside
-      class="fixed inset-y-0 right-0 z-30 flex w-72 flex-col border-e border-line bg-white
+      class="fixed inset-y-0 right-0 z-30 flex h-screen w-72 flex-col border-e border-line bg-white
              transition-transform duration-300 md:static md:z-auto md:translate-x-0"
       [class.translate-x-0]="open()"
       [class.translate-x-full]="!open()"
@@ -19,7 +19,9 @@ import { BrandComponent } from '../../../shared/brand';
     >
       <!-- الشعار -->
       <div class="flex h-16 shrink-0 items-center px-5">
-        <app-brand />
+        <a routerLink="/brand" (click)="navigate.emit()" class="inline-flex rounded-xl transition-opacity hover:opacity-80" title="تعديل الشعار">
+          <app-brand />
+        </a>
       </div>
 
       <!-- التنقّل -->

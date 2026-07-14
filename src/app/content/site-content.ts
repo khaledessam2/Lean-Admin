@@ -2,6 +2,7 @@
  * يجمّع كل نماذج الأقسام في نموذج واحد للموقع كامل + المحتوى الافتراضي + دالة الدمج.
  * هذا الملف لا يعتمد على Angular حتى يمكن مشاركته مع تطبيق الأدمن.
  */
+import { BrandContent, BRAND_DEFAULT } from './models/brand.model';
 import { HeroContent, HERO_DEFAULT } from './models/hero.model';
 import { OverviewContent, OVERVIEW_DEFAULT } from './models/overview.model';
 import { FeaturesContent, FEATURES_DEFAULT } from './models/features.model';
@@ -17,6 +18,7 @@ import { FooterContent, FOOTER_DEFAULT } from './models/footer.model';
 
 /** الشكل الكامل لمحتوى الموقع. كل مفتاح = قسم = صف في جدول site_content. */
 export interface SiteContent {
+  brand: BrandContent;
   hero: HeroContent;
   overview: OverviewContent;
   features: FeaturesContent;
@@ -35,6 +37,7 @@ export type SectionKey = keyof SiteContent;
 
 /** ترتيب الأقسام كما تظهر في لوحة الأدمن + عنوان عربي لكل قسم. */
 export const SECTION_ORDER: { key: SectionKey; label: string }[] = [
+  { key: 'brand', label: 'الشعار' },
   { key: 'hero', label: 'الواجهة الرئيسية' },
   { key: 'overview', label: 'نظرة عامة' },
   { key: 'features', label: 'المميزات' },
@@ -50,6 +53,7 @@ export const SECTION_ORDER: { key: SectionKey; label: string }[] = [
 ];
 
 export const DEFAULT_CONTENT: SiteContent = {
+  brand: BRAND_DEFAULT,
   hero: HERO_DEFAULT,
   overview: OVERVIEW_DEFAULT,
   features: FEATURES_DEFAULT,
@@ -88,6 +92,7 @@ export function mergeContent(
 }
 
 // إعادة تصدير كل الأنواع لسهولة الاستيراد من مكان واحد
+export * from './models/brand.model';
 export * from './models/icon.model';
 export * from './models/hero.model';
 export * from './models/overview.model';

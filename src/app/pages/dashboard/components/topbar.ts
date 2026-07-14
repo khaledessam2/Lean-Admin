@@ -37,24 +37,11 @@ import { sectionBySlug } from '../../../editor/section-meta';
 
       <!-- يمين: أدوات -->
       <div class="flex items-center gap-1">
-        <button type="button" class="icon-btn" title="بحث">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" />
-          </svg>
-        </button>
-
         <a [href]="siteUrl()" target="_blank" rel="noopener" class="icon-btn" title="معاينة الموقع">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
           </svg>
         </a>
-
-        <button type="button" class="icon-btn" title="الإشعارات">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.7 21a2 2 0 0 1-3.4 0" />
-          </svg>
-          <span class="absolute end-2 top-2 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
-        </button>
 
         <div class="mx-1 h-7 w-px bg-line"></div>
 

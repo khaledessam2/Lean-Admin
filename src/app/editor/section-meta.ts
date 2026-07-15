@@ -46,20 +46,10 @@ export const SECTION_META: Record<SectionKey, SectionMeta> = {
     icon: 'briefcase',
     description: 'الجهات المتعاملة وشهادات العملاء.',
   },
-  pricing: {
-    slug: 'pricing',
-    icon: 'tag',
-    description: 'الباقات وأسعارها ومزاياها ونصوص التبديل بين الشهري والسنوي.',
-  },
   faq: {
     slug: 'faq',
     icon: 'help',
     description: 'الأسئلة الشائعة وإجاباتها.',
-  },
-  pricingPage: {
-    slug: 'pricing-page',
-    icon: 'document',
-    description: 'ترويسة صفحة الباقات المستقلّة (الشارة والعنوان والمقدّمة).',
   },
   contact: {
     slug: 'contact',

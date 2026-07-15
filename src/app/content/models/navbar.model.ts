@@ -20,7 +20,6 @@ export const NAVBAR_DEFAULT: NavbarContent = {
     { label: 'المنصة', route: '/', fragment: 'overview' },
     { label: 'المميزات', route: '/', fragment: 'features' },
     { label: 'المستخدمون', route: '/', fragment: 'audience' },
-    { label: 'الباقات', route: '/pricing' },
     { label: 'عملاؤنا', route: '/', fragment: 'clients' },
   ],
   cta: 'اطلب عرضاً تجريبياً',

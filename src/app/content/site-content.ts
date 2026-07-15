@@ -9,9 +9,7 @@ import { FeaturesContent, FEATURES_DEFAULT } from './models/features.model';
 import { AudienceContent, AUDIENCE_DEFAULT } from './models/audience.model';
 import { ReportsContent, REPORTS_DEFAULT } from './models/reports.model';
 import { ClientsContent, CLIENTS_DEFAULT } from './models/clients.model';
-import { PricingContent, PRICING_DEFAULT } from './models/pricing.model';
 import { FaqContent, FAQ_DEFAULT } from './models/faq.model';
-import { PricingPageContent, PRICING_PAGE_DEFAULT } from './models/pricing-page.model';
 import { ContactContent, CONTACT_DEFAULT } from './models/contact.model';
 import { NavbarContent, NAVBAR_DEFAULT } from './models/navbar.model';
 import { FooterContent, FOOTER_DEFAULT } from './models/footer.model';
@@ -25,9 +23,7 @@ export interface SiteContent {
   audience: AudienceContent;
   reports: ReportsContent;
   clients: ClientsContent;
-  pricing: PricingContent;
   faq: FaqContent;
-  pricingPage: PricingPageContent;
   contact: ContactContent;
   navbar: NavbarContent;
   footer: FooterContent;
@@ -44,9 +40,7 @@ export const SECTION_ORDER: { key: SectionKey; label: string }[] = [
   { key: 'audience', label: 'المستخدمون' },
   { key: 'reports', label: 'التقارير' },
   { key: 'clients', label: 'العملاء' },
-  { key: 'pricing', label: 'الباقات' },
   { key: 'faq', label: 'الأسئلة الشائعة' },
-  { key: 'pricingPage', label: 'ترويسة صفحة الباقات' },
   { key: 'contact', label: 'التواصل' },
   { key: 'navbar', label: 'شريط التنقّل' },
   { key: 'footer', label: 'التذييل' },
@@ -60,9 +54,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   audience: AUDIENCE_DEFAULT,
   reports: REPORTS_DEFAULT,
   clients: CLIENTS_DEFAULT,
-  pricing: PRICING_DEFAULT,
   faq: FAQ_DEFAULT,
-  pricingPage: PRICING_PAGE_DEFAULT,
   contact: CONTACT_DEFAULT,
   navbar: NAVBAR_DEFAULT,
   footer: FOOTER_DEFAULT,
@@ -100,9 +92,7 @@ export * from './models/features.model';
 export * from './models/audience.model';
 export * from './models/reports.model';
 export * from './models/clients.model';
-export * from './models/pricing.model';
 export * from './models/faq.model';
-export * from './models/pricing-page.model';
 export * from './models/contact.model';
 export * from './models/navbar.model';
 export * from './models/footer.model';

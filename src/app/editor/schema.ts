@@ -60,7 +60,6 @@ const SCHEMAS: Record<SectionKey, FieldSchema[]> = {
     { key: 'paragraph', label: 'الفقرة التعريفية', type: 'textarea' },
     { key: 'primaryCta', label: 'زر أساسي', type: 'text' },
     { key: 'secondaryCta', label: 'زر ثانوي', type: 'text' },
-    { key: 'note', label: 'ملاحظة صغيرة', type: 'text' },
     { key: 'image', label: 'الصورة الرئيسية', type: 'image' },
   ],
   overview: [

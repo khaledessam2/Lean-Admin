@@ -12,8 +12,6 @@ export interface HeroContent {
   primaryCta: string;
   /** نص الزر الثانوي */
   secondaryCta: string;
-  /** الملاحظة الصغيرة تحت الأزرار */
-  note: string;
   /** صورة الواجهة الرئيسية (مسار داخل public أو رابط من التخزين) */
   image: string;
 }
@@ -26,6 +24,5 @@ export const HERO_DEFAULT: HeroContent = {
     'منصة رقمية متكاملة لإدارة التعليم والتدريب الإلكتروني، مصمّمة لتلبية احتياجات المؤسسات الحكومية والخاصة في تطوير كوادرها البشرية عبر التدريب الذاتي والمباشر والحضوري، مدعومة بأحدث أدوات الذكاء الاصطناعي.',
   primaryCta: 'اطّلع على الباقات',
   secondaryCta: 'اكتشف المنصة',
-  note: 'جرّب المنصة الآن بدون إدخال بيانات الدفع.',
   image: 'Gemini_Generated_Image_prc66jprc66jprc6.png',
 };

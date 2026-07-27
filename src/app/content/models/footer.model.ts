@@ -17,11 +17,6 @@ export interface SocialLink {
   href: string;
 }
 
-export interface BottomLink {
-  label: string;
-  href: string;
-}
-
 export interface FooterContent {
   /** النص التعريفي تحت الشعار */
   blurb: string;
@@ -31,8 +26,6 @@ export interface FooterContent {
   copyright: string;
   /** السنة */
   year: number;
-  /** روابط أسفل التذييل */
-  bottomLinks: BottomLink[];
 }
 
 export const FOOTER_DEFAULT: FooterContent = {
@@ -73,8 +66,4 @@ export const FOOTER_DEFAULT: FooterContent = {
   ],
   copyright: 'لين أكاديمي. جميع الحقوق محفوظة.',
   year: 2026,
-  bottomLinks: [
-    { label: 'سياسة الخصوصية', href: '#' },
-    { label: 'الشروط والأحكام', href: '#' },
-  ],
 };

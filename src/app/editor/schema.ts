@@ -218,13 +218,7 @@ const SCHEMAS: Record<SectionKey, FieldSchema[]> = {
     },
     { key: 'copyright', label: 'نص حقوق النشر', type: 'text' },
     { key: 'year', label: 'السنة', type: 'number' },
-    {
-      key: 'bottomLinks', label: 'روابط أسفل التذييل', type: 'objectlist', itemLabel: 'رابط',
-      fields: [
-        { key: 'label', label: 'النص', type: 'text' },
-        { key: 'href', label: 'الرابط', type: 'text' },
-      ],
-    },
+    // روابط أسفل التذييل (الشروط والأحكام / سياسة الخصوصية) ثابتة في الموقع وغير قابلة للتعديل من هنا.
   ],
 };
 

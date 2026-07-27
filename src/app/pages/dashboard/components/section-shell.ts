@@ -30,9 +30,11 @@ import { SectionKey } from '@site/content/site-content';
           </div>
         </div>
         <div class="flex gap-2.5">
+          <!-- زر الإرجاع للأصلي (معطّل مؤقتًا)
           <button type="button" class="btn-ghost btn-sm" (click)="onReset()" [disabled]="store.saving()">
             إرجاع للأصلي
           </button>
+          -->
           <button type="button" class="btn btn-sm" (click)="onSave()" [disabled]="store.saving()">
             @if (store.saving()) {
               <span class="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"></span>
@@ -87,14 +89,15 @@ export class SectionShellComponent {
     void this.store.save(this.sectionKey());
   }
 
-  protected async onReset(): Promise<void> {
-    const ok = await this.confirm.ask({
-      title: 'إرجاع للأصلي',
-      message: 'سيتم إرجاع هذا القسم إلى محتواه الأصلي وفقدان تعديلاتك غير المحفوظة. متابعة؟',
-      confirmText: 'إرجاع',
-      danger: true,
-    });
-    if (!ok) return;
-    void this.store.reset(this.sectionKey());
-  }
+  // معطّل مؤقتًا مع زر «إرجاع للأصلي» في الترويسة.
+  // protected async onReset(): Promise<void> {
+  //   const ok = await this.confirm.ask({
+  //     title: 'إرجاع للأصلي',
+  //     message: 'سيتم إرجاع هذا القسم إلى محتواه الأصلي وفقدان تعديلاتك غير المحفوظة. متابعة؟',
+  //     confirmText: 'إرجاع',
+  //     danger: true,
+  //   });
+  //   if (!ok) return;
+  //   void this.store.reset(this.sectionKey());
+  // }
 }
